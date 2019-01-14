@@ -1,5 +1,7 @@
 public class Main {
-    public static void(String args) {
-
+    public static void main(String[] args) {
+        Simulation asd = new Simulation(6, 6);
+        HistoricalDatas generator = new HistoricalDatas();
+        generator.generateData(asd);
     }
 }
