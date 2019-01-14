@@ -1,25 +1,24 @@
 import java.io.PrintWriter;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.File;
 
-public class HistoricalDatas {
-    public void generateData(Simulation sim) {
-        try {
-            PrintWriter pw = new PrintWriter(new File("data.csv"));
-            StringBuilder sb = new StringBuilder();
-            sb.append(sim.getId());
-            sb.append(',');
-            sb.append(sim.getWeaponType());
-            sb.append(',');
-            sb.append(sim.getPlayerCount());
-            sb.append(',');
-            sb.append(sim.getDeadPlayer());
-            sb.append('\n');
-            pw.write(sb.toString());
-            pw.close();
-        } catch(FileNotFoundException ex) {
-            System.out.println("File not found.");
+public class HistoricalDatas{
+
+    public void generateData(Simulation sim){
+
+        File csvfile = new File("data.csv");
+        String row = sim.getId() + "," + sim.getWeaponType() + "," + sim.getPlayerCount() + "," + sim.getDeadPlayer();
+        PrintWriter out = null;
+        try{
+            if (csvfile.exists() && !csvfile.isDirectory()){
+                out = new PrintWriter(new FileOutputStream(new File("data.csv"), true));
+            }else{
+                out = new PrintWriter("data.csv");
+            }
+            out.append(row + "\n");
+            out.close();
+        }catch(Exception e){
+            System.out.println("File doesn't exist.");
         }
     }
-
 }
