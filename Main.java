@@ -1,9 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        Simulation asd = new Simulation(6, 6);
-        Simulation asd2 = new Simulation(6, 6);
         HistoricalDatas generator = new HistoricalDatas();
-        generator.generateData(asd);
-        generator.generateData(asd2);
+        Simulation[] sims = new Simulation[10];
+        for(int i = 0; i < 10; i++) {
+            sims[i] = new Simulation(3, 2);
+            generator.generateData(sims[i]);
+        }
+
+        generator.load();
     }
 }
