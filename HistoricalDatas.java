@@ -67,7 +67,6 @@ public class HistoricalDatas {
         } catch(FileNotFoundException ex) {
             System.out.println("Oops, file not found!");
             System.exit(0);
-
         }
     }
 }

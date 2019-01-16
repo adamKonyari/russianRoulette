@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
         System.out.print("Weapon type: ");
         int weaponType = scan.nextInt();
@@ -18,6 +19,7 @@ public class Main {
         scan.close();
         generator.load();
         Statistics stat = new Statistics();
-        System.out.println(stat.ranking(stat.arrayBuilder("6", "3"))[1]);
+        Logger logger = new Logger();
+        logger.arrayLog((stat.ranking(stat.arrayBuilder("6", "6"))));
     }
 }
