@@ -51,4 +51,23 @@ public class Statistics {
             return counter;
         }
     }
+
+    public int[] ranking(Simulation[] sim){
+
+        int[] result = new int[sim[0].getPlayerCount()];
+        int[] percent = new int[result.length];
+        
+        for(Simulation s: sim){
+            result[s.getDeadPlayer() - 1] += 1;
+        }
+        for(int i = 0; i < result.length; i++){
+            double res = result[i];
+            double siml = sim.length;
+            double x = (res / siml) * 100;
+            percent[i] = (int) x;
+        }
+        return percent;
+
+    }
+
 }

@@ -18,6 +18,6 @@ public class Main {
         scan.close();
         generator.load();
         Statistics stat = new Statistics();
-        System.out.println(stat.arrayBuilder("6", "3").length);
+        System.out.println(stat.ranking(stat.arrayBuilder("6", "3"))[1]);
     }
 }
