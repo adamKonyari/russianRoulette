@@ -4,6 +4,10 @@ import java.io.File;
 
 public class HistoricalDatas{
 
+    public HistoricalDatas(){
+        
+    }
+
     public void generateData(Simulation sim){
 
         File csvfile = new File("data.csv");
