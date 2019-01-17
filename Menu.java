@@ -1,17 +1,18 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.concurrent.TimeUnit;
 
 public class Menu{
 
-    public void menuPrinter(){
+    public void menuPrinter() throws InterruptedException{
 
         
         int option;
         do{
             clearScreen();
             System.out.printf("Main Menu \n1. Try yourself in Russian Roulette \n2. I want to bet \n3. Statistics \n4. Check log file \n0. Exit");
-            System.out.println("\nGive a number");
+            System.out.println("\nPlease select an option: ");
             Scanner menu = new Scanner(System.in);
             Scanner scan = new Scanner(System.in);
             int weaponType;
@@ -26,6 +27,7 @@ public class Menu{
 
             switch(option){
                 case 1:
+                    clearScreen();
                     System.out.print("Weapon type: ");
                     weaponType = scan.nextInt();
                     System.out.print("Player count: ");
@@ -46,14 +48,17 @@ public class Menu{
                     int input = scan.nextInt();
                     Simulation finalSim = new Simulation(weaponType, playerCount);
                     if(input == finalSim.getDeadPlayer()) {
-                        System.out.println("YOU DIED");
+                        System.out.println("\nYOU DIED");
+                        Thread.sleep(3000);
                     } else {
-                        System.out.println("You've survived!");
+                        System.out.println("\nYou've survived!");
+                        Thread.sleep(3000);
                     }
                     generator.clearContent();
                     break;
 
                 case 2:
+                    clearScreen();
                     generator = new HistoricalDatas();
                     System.out.print("Weapon type: ");
                     weaponType = scan.nextInt();
@@ -73,17 +78,24 @@ public class Menu{
                     System.out.printf("Place your bet (1 - %s): ", playerCount);
                     int bet = scan.nextInt();
                     Simulation betSim = new Simulation(weaponType, playerCount);
-                    if(bet == betSim.getDeadPlayer()) {
-                        System.out.println("YOU WON");
+                    int deadPlayerNum = betSim.getDeadPlayer();
+                    if(bet == deadPlayerNum) {
+                        System.out.println("\nYOU WON");
+                        Thread.sleep(3000);
                     } else {
-                        System.out.println("You lost! ");
+                        System.out.printf("\nYou lost! The %s. player died in this round.", deadPlayerNum);
+                        Thread.sleep(3000);
                     }
                     break;
                 case 3:
-                System.out.println("not implemented");
+                clearScreen();
+                System.out.println("Not implemented");
+                Thread.sleep(1500);
                 break;
                 case 4:
-                System.out.println("not implemented");
+                clearScreen();
+                System.out.println("Not implemented");
+                Thread.sleep(1500);
                 break;
                 case 0:
                 System.exit(0);
