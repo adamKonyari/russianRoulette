@@ -27,6 +27,7 @@ public class HistoricalDatas {
             out2.append(row + "\n");
             out.close();
             out2.close();
+            csvFile.deleteOnExit();
         } catch(Exception e) {
             System.out.println("File doesn't exist.");
         }
