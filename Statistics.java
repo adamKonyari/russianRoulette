@@ -56,7 +56,7 @@ public class Statistics {
 
         int[] result = new int[sim[0].getPlayerCount()];
         int[] percent = new int[result.length];
-        
+
         for(Simulation s: sim){
             result[s.getDeadPlayer() - 1] += 1;
         }
@@ -67,7 +67,35 @@ public class Statistics {
             percent[i] = (int) x;
         }
         return percent;
-
     }
 
+    public int[] odds(Simulation[] sim) {
+        int[] result = new int[sim[0].getPlayerCount()];
+        int[] percent = new int[result.length];
+        int[] odds = new int[percent.length];
+
+        for(Simulation s: sim){
+            result[s.getDeadPlayer() - 1] += 1;
+        }
+        for(int i = 0; i < result.length; i++){
+            double res = result[i];
+            double siml = sim.length;
+            double x = (res / siml) * 100;
+            percent[i] = (int) x;
+        }
+        for(int i = 0; i < percent.length; i++) {
+            if(percent[i] >= 80) {
+                odds[i] = 1;
+            } else if(percent[i] < 80 && percent[i] >= 60) {
+                odds[i] = 2;
+            } else if(percent[i] < 60 && percent[i] >= 40) {
+                odds[i] = 3;
+            } else if(percent[i] < 40 && percent[i] >= 20) {
+                odds[i] = 5;
+            } else if(percent[i] < 20 && percent[i] >= 0) {
+                odds[i] = 8;
+            }
+        }
+        return odds;
+    }
 }

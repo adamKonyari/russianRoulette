@@ -10,9 +10,15 @@ public class Logger{
         System.out.println(ts + " " + type + " " + message);
     }
 
-    public void arrayLog(int[] intArray) {
-        for(int i = 0; i < intArray.length; i++) {
-            System.out.println(i + 1 + ". " + intArray[i] + "%");
+    public void arrayLog(int[] perArray) {
+        for(int i = 0; i < perArray.length; i++) {
+            System.out.println(i + 1 + ". " + perArray[i] + "%");
+        }
+    }
+
+    public void arrayLog(int[] perArray, int[] oddsArray) {
+        for(int i = 0; i < perArray.length; i++) {
+            System.out.println(i + 1 + ". " + perArray[i] + "% " + oddsArray[i]);
         }
     }
 }
