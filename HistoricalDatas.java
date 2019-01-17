@@ -3,6 +3,7 @@ import java.io.FileOutputStream;
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 
 public class HistoricalDatas {
 
@@ -68,6 +69,15 @@ public class HistoricalDatas {
         } catch(FileNotFoundException ex) {
             System.out.println("Oops, file not found!");
             System.exit(0);
+        }
+    }
+
+    public void clearContent() {
+        try {
+            FileWriter fw = new FileWriter("data.csv", false);
+            fw.close();
+        } catch(Exception e) {
+            System.out.println("Exception occured.");
         }
     }
 }
