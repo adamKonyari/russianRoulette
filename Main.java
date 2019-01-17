@@ -1,9 +1,25 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        Simulation asd = new Simulation(6, 6);
-        Simulation asd2 = new Simulation(6, 6);
+
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Weapon type: ");
+        int weaponType = scan.nextInt();
+        System.out.print("Player count: ");
+        int playerCount = scan.nextInt();
+        System.out.print("Simulations: ");
+        int simulations = scan.nextInt();
         HistoricalDatas generator = new HistoricalDatas();
-        generator.generateData(asd);
-        generator.generateData(asd2);
+        Simulation[] sims = new Simulation[simulations];
+        for(int i = 0; i < simulations; i++) {
+            sims[i] = new Simulation(weaponType, playerCount);
+            generator.generateData(sims[i]);
+        }
+        scan.close();
+        generator.load();
+        Statistics stat = new Statistics();
+        Logger logger = new Logger();
+        logger.arrayLog((stat.ranking(stat.arrayBuilder("6", "6"))));
     }
 }

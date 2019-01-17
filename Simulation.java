@@ -6,7 +6,20 @@ public class Simulation {
     private int weaponType = 6;
     private int playerCount = 6;
     private int deadPlayer;
-    private int id = 0;
+    private int id2;
+    private static int id = 0;
+
+    @Override
+    public String toString() {
+        return String.format("%s \t%s \t%s \t%s", id2, weaponType, playerCount, deadPlayer);
+    }
+
+    public Simulation(int id2, int weaponType, int playerCount, int deadPlayer) {
+        this.id2 = id2;
+        this.weaponType = weaponType;
+        this.playerCount = playerCount;
+        this.deadPlayer = deadPlayer;
+    }
 
     public Simulation(int weaponType, int playerCount) {
         id++;
@@ -21,7 +34,7 @@ public class Simulation {
             deadPlayer = randomNumber;
         } else {
             if(randomNumber > playerCount && mod != 0) {
-                deadPlayer = randomNumber % playerCount;
+                deadPlayer = mod;
             } else if(randomNumber > playerCount && mod == 0) {
                 deadPlayer = playerCount;
             } else {
