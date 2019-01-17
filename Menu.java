@@ -36,7 +36,7 @@ public class Menu{
                         sims[i] = new Simulation(weaponType, playerCount);
                         generator.generateData(sims[i]);
                     }
-                    generator.load();
+                    generator.load("data.csv");
                     stat = new Statistics();
                     logger = new Logger();
                     logger.arrayLog((stat.ranking(stat.arrayBuilder(Integer.toString(weaponType), Integer.toString(playerCount)))));
@@ -52,21 +52,30 @@ public class Menu{
                     break;
 
                 case 2:
+                    generator = new HistoricalDatas();
+                    System.out.print("Weapon type: ");
                     weaponType = scan.nextInt();
                     System.out.print("Player count: ");
                     playerCount = scan.nextInt();
-                    System.out.print("Simulations: ");
+                    /*System.out.print("Simulations: ");
                     simulations = scan.nextInt();
-                    generator = new HistoricalDatas();
                     sims = new Simulation[simulations];
                     for(int i = 0; i < simulations; i++) {
                         sims[i] = new Simulation(weaponType, playerCount);
                         generator.generateData(sims[i]);
-                    }
-                    generator.load();
+                    }*/
+                    generator.load("permanentData.csv");
                     stat = new Statistics();
                     logger = new Logger();
                     logger.arrayLog((stat.ranking(stat.arrayBuilder(Integer.toString(weaponType), Integer.toString(playerCount)))), (stat.odds(stat.arrayBuilder(Integer.toString(weaponType), Integer.toString(playerCount)))));
+                    System.out.printf("Place your bet (1 - %s): ", playerCount);
+                    int bet = scan.nextInt();
+                    Simulation betSim = new Simulation(weaponType, playerCount);
+                    if(bet == betSim.getDeadPlayer()) {
+                        System.out.println("YOU WON");
+                    } else {
+                        System.out.println("You lost! ");
+                    }
                     break;
                 case 3:
                 System.out.println("not implemented");

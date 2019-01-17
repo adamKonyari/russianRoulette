@@ -12,7 +12,6 @@ public class HistoricalDatas {
     public void generateData(Simulation sim) {
 
         File csvFile = new File("data.csv");
-        File permanentFile = new File("permanentData.csv");
         String row = sim.getId() + "," + sim.getWeaponType() + "," + sim.getPlayerCount() + "," + sim.getDeadPlayer();
         PrintWriter out = null;
         PrintWriter out2 = null;
@@ -22,7 +21,6 @@ public class HistoricalDatas {
                 out2 = new PrintWriter(new FileOutputStream(new File("permanentData.csv"), true));
             } else {
                 out = new PrintWriter("data.csv");
-                out2 = new PrintWriter("permanentData.csv");
             }
             out.append(row + "\n");
             out2.append(row + "\n");
@@ -53,10 +51,10 @@ public class HistoricalDatas {
         }
     }
 
-    public void load() {
+    public void load(String filename) {
         try {
-            simulations = new Simulation[lineCounter("data.csv")];
-            File csvFile = new File("data.csv");
+            simulations = new Simulation[lineCounter(filename)];
+            File csvFile = new File(filename);
             Scanner scan = new Scanner(csvFile);
             int i = 0;
             while (scan.hasNextLine()) {
@@ -71,6 +69,7 @@ public class HistoricalDatas {
             System.exit(0);
         }
     }
+
 
     public void clearContent() {
         try {
