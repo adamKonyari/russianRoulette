@@ -6,9 +6,11 @@ public class Menu{
 
     public void menuPrinter(){
 
-        System.out.printf("Main Menu \n1. Try yourself in Russian Roulette \n2. I want to bet \n3. Statistics \n4. Check log file \n0. Exit");
+        
         int option;
         do{
+            clearScreen();
+            System.out.printf("Main Menu \n1. Try yourself in Russian Roulette \n2. I want to bet \n3. Statistics \n4. Check log file \n0. Exit");
             System.out.println("\nGive a number");
             Scanner menu = new Scanner(System.in);
             Scanner scan = new Scanner(System.in);
@@ -96,7 +98,10 @@ public class Menu{
 
     }
 
-
+    public static void clearScreen() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    } 
 
 
 }

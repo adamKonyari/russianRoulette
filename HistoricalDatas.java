@@ -28,7 +28,7 @@ public class HistoricalDatas {
             out2.close();
             csvFile.deleteOnExit();
         } catch(Exception e) {
-            System.out.println("File doesn't exist.");
+            System.out.println("Please wait while loading...");
         }
     }
 
